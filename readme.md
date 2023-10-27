@@ -20,7 +20,11 @@
     - AWS Lightsail 
 
 # 사용 기술스택
-    - Python / Django
-    - 
+    - Backend : 
+        Python / Django 
+    - Frontend : 
+        HTML / CSS / Bootstrap 
+
+    
 
 # DB 구성 
