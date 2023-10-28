@@ -21,5 +21,8 @@ blog > admin.py
 tutorlialdjango > urls.py
 ## 이상 모놀리식 기본 구성 
 
+블로그 페이지 먼저 구성
+필요한 DB 리스트업 
+
 
 
