@@ -98,7 +98,7 @@ def comment_new(request, pk):
     post = Post.objects.get(pk=pk)
     if request.method == 'POST':
         form = CommentForm(request.POST)
-        if form.is_valid(): 
+        if form.is_valid():
             comment = form.save(commit=False) # commit=False는 DB에 저장하지 않고 객체만 반환
             comment.post = post
             comment.author = request.user
@@ -109,3 +109,4 @@ def comment_new(request, pk):
     return render(request, 'blog/form.html', {
         'form': form,
     })
+    
