@@ -113,6 +113,9 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+# 로그인 시 도착할 인덱스 페이지 
+LOGIN_REDIRECT_URL = 'http://localhost:8000/blog/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

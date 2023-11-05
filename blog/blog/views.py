@@ -15,6 +15,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 
 
+
 class PostListView(ListView):
     model = Post
 
@@ -34,6 +35,8 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('blog:post_list')
     template_name = 'blog/form.html'
 
+    
+    
     def form_valid(self, form):
         video = form.save(commit=False) # commit=False는 DB에 저장하지 않고 객체만 반환
         video.author = self.request.user
