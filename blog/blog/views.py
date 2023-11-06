@@ -18,12 +18,18 @@ from django.contrib.auth.decorators import login_required
 
 class PostListView(ListView):
     model = Post
+    template_name = 'post_list.html'
 
     def get_queryset(self):
         qs = super().get_queryset()
+        
         q = self.request.GET.get('q', '')
         if q:
             qs = qs.filter(title__icontains=q)
+            
+        if self.request.user.is_authenticated:
+            qs = qs.filter(author=self.request.user)
+            
         return qs
 
 post_list = PostListView.as_view()

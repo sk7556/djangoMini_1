@@ -17,7 +17,7 @@ login = LoginView.as_view(
 )
 
 logout = LogoutView.as_view(
-    next_page = '/accounts/login/'
+    next_page = '/'
 )
 
 @login_required

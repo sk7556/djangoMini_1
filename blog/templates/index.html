@@ -48,7 +48,7 @@
                             id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html">Home</a>
+                                    <a class="nav-link" href="">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="about.html">About</a>
@@ -82,12 +82,19 @@
                             <h2> 오늘은 어떤 영상을 보았나요 ? </h2>
                             <p>  어제 본 영상도 오늘 본 영상도 기억하지 못하고 그저 무의식적으로 유튜브의 스크롤을 내리고 있지 않나요? </p>
                             <div class="banner_btn">
+                                {% if not user.is_authenticated %}
                                 <div class="banner_btn_iner">
-                                    <a href="blog/signup/" class="btn_2"> Sign up <img src="{% static 'img/icon/left_1.svg' %}" alt=""></a>
+                                    <a href="accounts/signup/" class="btn_2"> 회원 가입  <img src="{% static 'img/icon/left_1.svg' %}" alt=""></a>
                                 </div>
                                 <div class="banner_btn_iner">
-                                    <a href="#" class="btn_2"> Sign In <img src="{% static 'img/icon/left_1.svg' %}" alt=""></a>
+                                    <a href="accounts/login/" class="btn_2"> 로그인 <img src="{% static 'img/icon/left_1.svg' %}" alt=""></a>
                                 </div>
+                                {% endif %}
+                                {% if user.is_authenticated %}
+                                <div class="banner_btn_iner">
+                                    <a href="accounts/login/" class="btn_2"> 블로그로 이동 <img src="{% static 'img/icon/left_1.svg' %}" alt=""></a>
+                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
