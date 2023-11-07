@@ -26,6 +26,14 @@ class Post(models.Model):
     def image_url(self):
         if self.thumb_image:
             return self.thumb_image.url
+        
+    @property
+    def created_month(self):
+        return self.created_at.strftime("%b")  # "1월"을 "Jan"으로 형식화
+
+    @property
+    def created_day(self):
+        return self.created_at.strftime("%d")  # 일을 DD 형식으로 가져옴
     
     
 class Comment(models.Model):

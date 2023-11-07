@@ -13,12 +13,17 @@ from .forms import PostForm, CommentForm
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage # 페이지 구성 추가 
 
 
 
+# paginator = Paginator(model, 5) 
+#     page = request.GET.get('page')
 class PostListView(ListView):
     model = Post
     template_name = 'post_list.html'
+    context_object_name = 'posts'
+    paginate_by = 5
 
     def get_queryset(self):
         qs = super().get_queryset()
@@ -119,3 +124,5 @@ def comment_new(request, pk):
         'form': form,
     })
     
+def blog(request):
+    return render(request, 'blog.html')

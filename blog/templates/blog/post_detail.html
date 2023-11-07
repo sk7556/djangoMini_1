@@ -1,41 +1,278 @@
-<p>{{object.title}}</p>
-<p>{{object.content}}</p>
+{% load static %}
 
-<p>{{post.title}}</p>
-<p>{{post.content}}</p>
-<p>조회수 : {{post.view_count}}</p>
-{% if post.file_upload %}
-<video src="{{post.file_upload.url}}" controls></video>
-{% endif %}
+<!doctype html>
+<html lang="en">
 
-<hr>
-<section>
-    <h3>태그</h3>
-    {% for tag in post.tags.all %}
-        <p>{{tag.name}}</p>
-    {% endfor %}
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dingo</title>
+    <link rel="icon" href="{% static 'img/favicon.png' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- animate CSS -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- owl carousel CSS -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <!-- themify CSS -->
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <!-- flaticon CSS -->
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <!-- font awesome CSS -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <!-- swiper CSS -->
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/gijgo.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <!-- style CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <!--::header part start::-->
+    <header class="main_menu">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <a class="navbar-brand" href="index.html"> <img src="{% static 'img/logo.png' %}" alt="logo"> </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="collapse navbar-collapse main-menu-item justify-content-end"
+                            id="navbarSupportedContent">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'blog:post_list' %}">Blog</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="friends/">MyPage</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">MyPage</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header part end-->
+
+<!--================Blog Area =================-->
+<section class="blog_area single-post-area section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 posts-list">
+            <div class="single-post">
+                <div class="feature-img">
+                    <img class="card-img rounded-0" src="{{ post.image_url }}" alt="" style="width: 60%;" >
+                </div>
+                <div class="blog_details">
+                    <h2>{{ post.title }}</h2>
+                    <ul class="blog-info-link mt-3 mb-4">
+                        <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
+                        <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
+                    </ul>
+                    <p class="excert">
+                        {{ post.content }}
+                    </p>
+                    <div class="quote-wrapper">
+                        <div class="quotes">
+                            랩퍼에 입력되면 이런게 있는 듯 하다 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="blog-author"> <!-- 영상 평가 -->
+                <div class="media align-items-center">
+                    <img src="img/blog/author.png" alt="">
+                    <div class="media-body">
+                        <a href="#">
+                            <h4>Harvard milan</h4>
+                        </a>
+                        <p> 영상에 대한 평가가 들어가는 칸 </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="navigation-top">
+                <div class="d-sm-flex justify-content-between text-center">
+                <!-- 좋아요 -->
+                    <p class="like-info"><span class="align-middle"><i class="far fa-heart"></i></span> Lily and 4
+                        people like this</p>
+                </div>
+                <div class="navigation-area">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                            <div class="thumb">
+                                <a href="#">
+                                    <img class="img-fluid" src="img/post/preview.png" alt="">
+                                </a>
+                            </div>
+                            <div class="arrow">
+                                <a href="#">
+                                    <span class="lnr text-white ti-arrow-left"></span>
+                                </a>
+                            </div>
+                            <div class="detials">
+                                <p>Prev Post</p>
+                                <a href="#">
+                                    <h4>Space The Final Frontier</h4>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                            <div class="detials">
+                                <p>Next Post</p>
+                                <a href="#">
+                                    <h4>Telescopes 101</h4>
+                                </a>
+                            </div>
+                            <div class="arrow">
+                                <a href="#">
+                                    <span class="lnr text-white ti-arrow-right"></span>
+                                </a>
+                            </div>
+                            <div class="thumb">
+                                <a href="#">
+                                    <img class="img-fluid" src="img/post/next.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="comments-area">
+                <h4>댓글갯수 Comments</h4>
+                    <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                            <div class="user justify-content-between d-flex">
+                                <div class="thumb">
+                                    <img src="img/comment/comment_1.png" alt="">
+                                </div>
+                            <div class="desc">
+                                <p class="comment">
+                                    댓글댓글댓글댓글
+                                </p>
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <h5>
+                                        <a href="#"> 댓글 쓴 사람 이름 </a>
+                                    </h5>
+                                    <p class="date">December 4, 2017 at 3:12 pm </p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="comment-form">
+                    <h4>Leave a Reply</h4> <!-- 댓글 -->
+                    <form class="form-contact comment_form" action="#" id="commentForm">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9"
+                                    placeholder="Write Comment"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="button button-contactForm">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+<!--================Blog Area end =================-->
 
-<section>
-    <h3>댓글</h3>
-    {% for comment in post.comments.all %}
-        <p>{{comment.message}}</p>
-        <p>{{comment.author}}</p>
-        <p>{{comment.updated_at}}</p>
-    {% endfor %}
-</section>
+<footer class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 col-md-3 col-lg-3">
+                <div class="single-footer-widget footer_1">
+                    <h4> About </h4>
+                    <p> 유튜브 중독자가 되어버린 제작자가 만들어본 포트폴리오 페이지입니다. </p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-md-2 col-lg-3">
+                <div class="single-footer-widget footer_2">
+                    <h4> 사용 기술 </h4>
+                    <div class="contact_info">
+                        <ul>
+                            <li><a href="#"> Python / Django </a></li>
+                            <li><a href="#"> Postgre SQL </a></li>
+                            <li><a href="#"> Bootstrap5 템플릿 활용 </a></li>
+                            <li><a href="#"> VSCODE / DBeaver 활용 </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-md-3 col-lg-3">
+                <div class="single-footer-widget footer_2">
+                    <h4>Contact me</h4>
+                    <div class="contact_info">
+                        <p><span> Address :</span> 경기도 성남시 </p>
+                        <p><span> Email : </span> kuuko7556@gmail.com </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright_part_text">
+            <div class="row">
+                <div class="col-lg-8">
+                    <p class="footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div>
+                <div class="col-lg-4">
+                    <div class="copyright_social_icon text-right">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="ti-dribbble"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- footer part end-->
 
-<section>
-    <h3>댓글 작성</h3>
-    <form action="{% url 'blog:comment_new' post.pk %}" method="post">
-        {% csrf_token %}
-        {{ comment_form.as_p }}
-        <input type="submit" value="댓글 작성">
-    </form>
-</section>
+<!-- jquery plugins here-->
+<!-- jquery -->
+<script src="<% static 'js/jquery-1.12.1.min.js' %}"></script>
+<!-- popper js -->
+<script src="<% static 'js/popper.min.js' %}"></script>
+<!-- bootstrap js -->
+<script src="<% static 'js/bootstrap.min.js' %}"></script>
+<!-- easing js -->
+<script src="<% static 'js/jquery.magnific-popup.js' %}"></script>
+<!-- swiper js -->
+<script src="<% static 'js/swiper.min.js' %}"></script>
+<!-- swiper js -->
+<script src="<% static 'js/masonry.pkgd.js' %}"></script>
+<!-- particles js -->
+<script src="<% static 'js/owl.carousel.min.js' %}"></script>
+<!-- swiper js -->
+<script src="<% static 'js/slick.min.js' %}"></script>
+<script src="<% static 'js/gijgo.min.js' %}"></script>
+<script src="<% static 'js/jquery.nice-select.min.js' %}"></script>
+<!-- custom js -->
+<script src="<% static 'js/custom.js' %}"></script>
+</body>
 
-<a href="{% url 'blog:post_list' %}">목록</a>
-{% if user == post.author %}
-<a href="{% url 'blog:post_edit' post.pk %}">수정</a>
-<a href="{% url 'blog:post_delete' post.pk %}">삭제</a>
-{% endif %}
+</html>

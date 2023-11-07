@@ -3,7 +3,9 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from django.views.generic.base import RedirectView
-from .views import index
+from .views import index, friends
+
+app_name = 'tubeBlog'
 
 urlpatterns = [
     path('', index),
@@ -11,6 +13,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
     path('accounts/', include('accounts.urls')),
+    path('friends/', friends),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
