@@ -23,3 +23,7 @@ logout = LogoutView.as_view(
 @login_required
 def profile(request):
     return render(request, 'accounts/profile.html')
+
+@login_required
+def friendList(request):
+    return render(request, 'accounts/friendList.html')

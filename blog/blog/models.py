@@ -1,6 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
+import os
 
+def custom_image_path(instance, filename):
+    # 현재 날짜 및 시간 가져오기
+    now = datetime.now()
+    # 폴더 경로를 연월일 형식으로 만들기
+    folder_path = now.strftime('blog/images/%Y/%m/%d/')
+    # 파일명에 현재 날짜와 시간 정보 추가
+    new_filename = now.strftime('%Y%m%d%H%M%S') + os.path.splitext(filename)[1]
+    # 최종 파일 경로 반환
+    return os.path.join(folder_path, new_filename)
 
 class Post(models.Model):
     # 사용하게 되는 DB 릴레이션 
@@ -11,7 +22,7 @@ class Post(models.Model):
     content = models.TextField()
     movieAd = models.TextField()
     thumb_image = models.ImageField(
-        upload_to='blog/images/%Y/%m/%d/', blank=True)
+        upload_to=custom_image_path, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     view_count = models.PositiveIntegerField(default=0)
@@ -26,6 +37,9 @@ class Post(models.Model):
     def image_url(self):
         if self.thumb_image:
             return self.thumb_image.url
+    class Meta:
+        ordering = ['-created_at']
+    
         
     @property
     def created_month(self):

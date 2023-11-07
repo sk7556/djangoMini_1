@@ -13,35 +13,56 @@ from .forms import PostForm, CommentForm
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
 
 class PostListView(ListView):
     model = Post
-    template_name = 'post_list.html'
-    context_object_name = 'posts'
-    paginate_by = 5
-
+    template_name = 'blog/post_list.html'
+    
     def get_queryset(self):
         qs = super().get_queryset()
-        
+
         q = self.request.GET.get('q', '')
         if q:
             qs = qs.filter(title__icontains=q)
-            
+
         if self.request.user.is_authenticated:
             qs = qs.filter(author=self.request.user)
-            
-        return qs
 
+        return qs
+        
 post_list = PostListView.as_view()
 
+class PostListFriendView(ListView):
+    model = Post
+    template_name = 'blog/post_list_friends.html'
+    
+    def get_queryset(self):
+        qs = super().get_queryset()
+
+        q = self.request.GET.get('q', '')
+        if q:
+            qs = qs.filter(title__icontains=q)
+
+        # if self.request.user.is_authenticated:
+        #     qs = qs.filter(author=self.request.user)
+
+        return qs # 현재는 전체 다 보여주는 방식임 
+        
+post_list_friend = PostListFriendView.as_view()
+
+# 페이지네이션 문제 처리 
+def paginate_posts(request, queryset, items_per_page=5):
+    page_number = request.GET.get('page')
+    paginator = Paginator(queryset, items_per_page)
+    page = paginator.get_page(page_number)
+    return page
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     success_url = reverse_lazy('blog:post_list')
-    template_name = 'blog/form.html'
-
-    
+    template_name = 'blog/post_list.html'
     
     def form_valid(self, form):
         video = form.save(commit=False) # commit=False는 DB에 저장하지 않고 객체만 반환
@@ -118,6 +139,6 @@ def comment_new(request, pk):
     return render(request, 'blog/form.html', {
         'form': form,
     })
-    
+
 def blog(request):
     return render(request, 'blog.html')
