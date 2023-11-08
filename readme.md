@@ -79,21 +79,21 @@ _________________________________
   | 'friends/'|	profile	|profile.html |
 
 - 블로그
- | app: blog	 | views 함수 이름	| html 파일이름 |
- | -----|---------|-----|
- |  ''  |post_list	| post_list.html |
- | 'int:pk/' |	post_detail |	post_detail.html |
- | friendPost/ | post_list_friend | post_list_friends.html |
- | 'new/'  |  post_new	| post_write.html |
- | 'int:pk/edit/'	| post_edit	| post_detail.html|
- | 'int:pk/delete/' |	post_delete	| post_confirm_delete.html |
- |  'search/' |	post_search	 | post_search.html |
- |  'int:pk/comment_new/'	| comment_new |	comment_new.html |
+  | app: blog	 | views 함수 이름	| html 파일이름 |
+  | -----|---------|-----|
+  |  ''  |post_list	| post_list.html |
+  | 'int:pk/' |	post_detail |	post_detail.html |
+  | friendPost/ | post_list_friend | post_list_friends.html |
+  | 'new/'  |  post_new	| post_write.html |
+  | 'int:pk/edit/'	| post_edit	| post_detail.html|
+  | 'int:pk/delete/' |	post_delete	| post_confirm_delete.html |
+  |  'search/' |	post_search	 | post_search.html |
+  |  'int:pk/comment_new/'	| comment_new |	comment_new.html |
 
 - 메인페이지 
- | app: blog	 | views 함수 이름	| html 파일이름 |
- | -----|---------|-----|
- |  ''  | index	| index.html |
+  | app: blog	 | views 함수 이름	| html 파일이름 |
+  | -----|---------|-----|
+  |  ''  | index	| index.html |
 
 ### 5. 프로젝트 진행
  
