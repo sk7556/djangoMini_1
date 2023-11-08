@@ -17,18 +17,23 @@ _________________________________
 
 1. 서비스화면
  - index / 가입 / 로그인
+ 
   ![가입로그인](https://github.com/sk7556/djangoMini_1/assets/109896609/f1c1a0b5-c296-4f0a-aaf6-a2379aa188f4)
   
  - 포스트 리스트 및 검색
+
   ![search](https://github.com/sk7556/djangoMini_1/assets/109896609/73f9cd5d-87d2-4237-a7c6-24eb69507822)
 
  - 포스트 ( 글 작성 )
+
   ![글작성](https://github.com/sk7556/djangoMini_1/assets/109896609/af14e18b-97e4-469a-90dc-6bc849f18e9f)
  
  - 포스트 ( 글 읽기 )
+
   ![read](https://github.com/sk7556/djangoMini_1/assets/109896609/fb36caa3-9955-435a-abed-19307037f16a)
 
  - 댓글 작성 기능 
+
   ![comment](https://github.com/sk7556/djangoMini_1/assets/109896609/654e7902-0a4d-4b65-b3c6-ef9c4ded317e)
 
 2. 화면설계 및 프로젝트 구조 
