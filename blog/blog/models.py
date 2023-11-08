@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.views.decorators.http import require_POST
+from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
 import os
 
 def custom_image_path(instance, filename):
@@ -20,13 +23,14 @@ class Post(models.Model):
     )
     title = models.CharField(max_length=100)
     content = models.TextField()
-    movieAd = models.TextField()
+    movieAd = models.URLField()
     thumb_image = models.ImageField(
         upload_to=custom_image_path, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateField(auto_now=True)
     view_count = models.PositiveIntegerField(default=0)
     tags = models.ManyToManyField('Tag', blank=True) 
+    likes = models.ManyToManyField(User, related_name='liked_posts')
 
     def __str__(self):
         return self.title
@@ -37,9 +41,8 @@ class Post(models.Model):
     def image_url(self):
         if self.thumb_image:
             return self.thumb_image.url
-    class Meta:
-        ordering = ['-created_at']
-    
+        else:
+            return 'static/img/banner_overlay.png' # 이미지가 없으면 지정한 이미지로 썸넬
         
     @property
     def created_month(self):
@@ -48,7 +51,8 @@ class Post(models.Model):
     @property
     def created_day(self):
         return self.created_at.strftime("%d")  # 일을 DD 형식으로 가져옴
-    
+    class Meta:
+        ordering = ['-created_at']
     
 class Comment(models.Model):
     # 댓글의 경우 다른 테이블로 관리 
@@ -80,3 +84,4 @@ class movieComment(models.Model):
     message = models.TextField()
     def __str__(self):
         return self.message
+    

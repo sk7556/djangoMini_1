@@ -4,7 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Cardo:400,400i,700|Lora:400,400i,700,700i");
 /* line 3, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_common.scss */
 body {
-  font-family: "Lora", serif;
+  font-family: "Lora";
   padding: 0;
   margin: 0;
   font-size: 14px;
@@ -140,7 +140,7 @@ input:hover, input:focus {
 a {
   text-decoration: none;
   -webkit-transition: 0.5s;
-  transition: 0.5s;
+  transition: 0.5s;, serif
 }
 
 /* line 74, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_common.scss */
@@ -154,12 +154,12 @@ a:hover {
 /* line 82, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_common.scss */
 h1, h2, h3, h4, h5, h6 {
   color: #2c3033;
-  font-family: "Cardo", serif;
+  font-family: "Lora";
 }
 
 /* line 86, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_common.scss */
 p {
-  font-family: "Lora", serif;
+  font-family: "Lora";
   line-height: 1.7;
   font-size: 15px;
   margin-bottom: 0px;
@@ -2257,7 +2257,7 @@ ul {
   color: #2c3033 !important;
   font-size: 16px;
   padding: 0px 22px !important;
-  font-family: "Lora", serif;
+  font-family: "Lora";
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1200px) {
@@ -2352,7 +2352,7 @@ ul {
 .dropdown .dropdown-menu .dropdown-item {
   font-size: 14px;
   padding: 9px 18px !important;
-  font-family: "Lora", serif;
+  font-family: "Lora";
 }
 
 /* line 101, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_menu.scss */
@@ -2639,7 +2639,7 @@ ul {
   color: #ff6426;
   font-style: italic;
   font-weight: 400;
-  font-family: "Lora", serif;
+  font-family: "Lora";
   margin-bottom: 25px;
 }
 
@@ -2651,7 +2651,7 @@ ul {
 /* line 91, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_banner.scss */
 .banner_part .banner_text h1 {
   font-size: 53px;
-  font-family: "Cardo", serif;
+  font-family: "Lora";
   font-weight: 700;
   margin-bottom: 15px;
   line-height: 1.273;
@@ -2915,7 +2915,7 @@ ul {
 
 /* line 7, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_about.scss */
 .about_part .about_text h5 {
-  font-family: "Lora", serif;
+  font-family: "Lora";
   font-size: 16px;
   color: #555555;
   margin-bottom: 18px;
@@ -3616,7 +3616,7 @@ ul {
   border-radius: 0px;
   padding: .375rem 0rem;
   font-size: 14px;
-  font-family: "Lora", serif;
+  font-family: "Lora";
   margin-bottom: 15px;
   padding-bottom: 15px;
   height: 40px;
@@ -5111,7 +5111,7 @@ h6 {
 /* line 96, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_review.scss */
 .review_part .client_review_single .client_review_text p {
   font-size: 20px;
-  font-family: "Lora", serif;
+  font-family: "Lora";
   color: #555555;
   font-style: italic;
   line-height: 1.6;
@@ -5172,7 +5172,7 @@ h6 {
 
 /* line 135, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_review.scss */
 .review_part .client_review_single .client_review_text h4 span {
-  font-family: "Cardo", serif;
+  font-family: "Lora";
   font-size: 14px;
   color: #555555;
 }
@@ -7109,7 +7109,7 @@ h6 {
   padding: 10px 20px;
   color: #999999;
   border: 0px solid transparent;
-  font-family: "Lora", serif;
+  font-family: "Lora";
 }
 
 /* line 68, E:/169 Dingo Restaurant/169 Dingo Restaurant/169_Dingo_Restautent_html/sass/_footer.scss */
@@ -7129,7 +7129,7 @@ h6 {
   border: 0;
   font-size: 12px;
   font-weight: 400;
-  font-family: "Lora", serif;
+  font-family: "Lora";
   position: relative;
   left: 0;
 }

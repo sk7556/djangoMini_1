@@ -68,6 +68,34 @@
     }
   });
 
+  function toggleMenu() {
+    var menu = document.getElementById("navbarSupportedContent");
+    if (menu.classList.contains("show")) {
+        menu.classList.remove("show");
+    } else {
+        menu.classList.add("show");
+    }
+  };
+
+  // 50자 자르기 
+  document.addEventListener("DOMContentLoaded", function() {
+    const postContents = document.querySelectorAll(".post-content");
+    const showMoreButtons = document.querySelectorAll(".show-more");
+
+    for (let i = 0; i < postContents.length; i++) {
+        const content = postContents[i].getAttribute("data-full-content");
+        const shortContent = content.substring(0, 50);
+
+        postContents[i].textContent = shortContent;
+
+        showMoreButtons[i].addEventListener("click", function() {
+            postContents[i].textContent = content;
+            showMoreButtons[i].style.display = "none";
+        });
+    }
+});
+
+
 //   $(document).ready(function(){
 
 //     var owl_1 = $('#owl-1');

@@ -7,7 +7,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Dingo</title>
+    <title>MyTube - pageList </title>
     <link rel="icon" href="{% static 'img/favicon.png' %}">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
@@ -37,41 +37,44 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
-                        <a class="navbar-brand" href="/"> <img src="{% static 'img/logo.png' %}" alt="logo"> </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
+                        <a class="navbar-brand" href="/"> <img src="{% static 'img/logo.png' %}" alt="logo" style="width: 60%;"> </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-
-                        <div class="collapse navbar-collapse main-menu-item justify-content-end"
-                            id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse main-menu-item text-center" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
                                     <a class="nav-link" href="/">Home</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'blog:post_list' %}">Blog</a>
-                                    
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'blog:post_list_friend' %}">Friends</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/">MyPage</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="blog.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        MyPage
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{% url 'accounts:profile' %}">프로필</a>
+                                        <a class="dropdown-item" href="{% url 'accounts:friendList' %}">친구 관리</a>
+                                        <a class="dropdown-item" href="{% url 'accounts:logout' %}">로그아웃</a>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
                     </nav>
                 </div>
-            </div>
+            </div> 
         </div>
     </header>
+    
     <!-- Header part end-->
 
     <!--================Blog Area =================-->
-    <section class="blog_area section_padding">
-        <div class="container">
+    <section class="blog_area">        
+        <div class="container">            
             <div class="row">
                 <div class="col-lg-8 mb-5 mb-lg-0">
                     <div class="blog_left_sidebar">
@@ -90,11 +93,10 @@
                                 <a class="d-inline-block" href="{% url 'blog:post_detail' post.pk %}">
                                     <h2>{{ post.title }}</h2>
                                 </a>
-                                <p> 내용 상위 2줄 요약 요약 요약 요약 </p>
-                                <ul class="blog-info-link">
-                                    <li><a href="#"><i class="far fa-user"></i> Travel, Lifestyle</a></li>
-                                    <li><a href="#"><i class="far fa-comments"></i> 03 Comments</a></li>
-                                </ul>
+                                <p class="post-content" data-full-content="{{ post.content }}">{{ post.short_content }}...... </p>
+                                <p> 관련어 : {% for tag in post.tags.all %}
+                                    {{tag.name}} , 
+                                {% endfor %} </p>
                             </div>
                         </article>
                         {% endfor %}
@@ -141,6 +143,11 @@
                 <div class="col-lg-4"> <!-- 사이드바에서 검색 -->
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
+                            <a href="{% url 'blog:post_new' %}" class="btn btn-primary rounded rounded-pill primary-bg text-white w-100 btn_4 mb-5">
+                                <button type="button" class="btn btn-primary" style="border: none;">새 글쓰기</button>
+                            </a>
+
+                            
                             <form action="" method = "GET">
                                 <div class="form-group">
                                     <div class="input-group mb-3">
@@ -219,25 +226,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     
     <!-- jquery plugins here-->
     <!-- jquery -->
-    <script src="<% static 'js/jquery-1.12.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery-1.12.1.min.js' %}"></script>
     <!-- popper js -->
-    <script src="<% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
     <!-- bootstrap js -->
-    <script src="<% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <!-- easing js -->
-    <script src="<% static 'js/jquery.magnific-popup.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
     <!-- swiper js -->
-    <script src="<% static 'js/swiper.min.js' %}"></script>
+    <script src="{% static 'js/swiper.min.js' %}"></script>
     <!-- swiper js -->
-    <script src="<% static 'js/masonry.pkgd.js' %}"></script>
+    <script src="{% static 'js/masonry.pkgd.js' %}"></script>
     <!-- particles js -->
-    <script src="<% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
     <!-- swiper js -->
-    <script src="<% static 'js/slick.min.js' %}"></script>
-    <script src="<% static 'js/gijgo.min.js' %}"></script>
-    <script src="<% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <script src="{% static 'js/gijgo.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
     <!-- custom js -->
-    <script src="<% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>    
     </body>
     
     </html>

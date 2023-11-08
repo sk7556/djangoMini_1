@@ -14,6 +14,7 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
+from django.template.defaultfilters import truncatechars 
 
 class PostListView(ListView):
     model = Post
@@ -29,25 +30,22 @@ class PostListView(ListView):
         if self.request.user.is_authenticated:
             qs = qs.filter(author=self.request.user)
 
-        return qs
-        
+        return qs    
+    
 post_list = PostListView.as_view()
 
 class PostListFriendView(ListView):
     model = Post
-    template_name = 'blog/post_list_friends.html'
+    template_name = 'blog/post_list_friends.html' 
     
     def get_queryset(self):
         qs = super().get_queryset()
 
         q = self.request.GET.get('q', '')
         if q:
-            qs = qs.filter(title__icontains=q)
+            qs = qs.filter(title__icontains=q)       
 
-        # if self.request.user.is_authenticated:
-        #     qs = qs.filter(author=self.request.user)
-
-        return qs # 현재는 전체 다 보여주는 방식임 
+        return qs    
         
 post_list_friend = PostListFriendView.as_view()
 
@@ -62,7 +60,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     form_class = PostForm
     success_url = reverse_lazy('blog:post_list')
-    template_name = 'blog/post_list.html'
+    template_name = 'blog/post_write.html'
     
     def form_valid(self, form):
         video = form.save(commit=False) # commit=False는 DB에 저장하지 않고 객체만 반환
@@ -104,7 +102,7 @@ class PostUpdateView(UserPassesTestMixin, UpdateView):
     model = Post
     form_class = PostForm
     success_url = reverse_lazy('blog:post_list')
-    template_name = 'blog/form.html'
+    template_name = 'blog/post_list.html'
 
     def test_func(self): # UserPassesTestMixin에 있고 test_func() 메서드를 오버라이딩, True, False 값으로 접근 제한
         return self.get_object().author == self.request.user
@@ -133,12 +131,13 @@ def comment_new(request, pk):
             comment.post = post
             comment.author = request.user
             comment.save()
-            return redirect('blog:post_detail', pk)
+            return redirect('blog:post_detail', pk=post.pk)
     else:
         form = CommentForm()
-    return render(request, 'blog/form.html', {
+    return render(request, 'blog/post_detail.html', {
         'form': form,
     })
 
 def blog(request):
     return render(request, 'blog.html')
+
