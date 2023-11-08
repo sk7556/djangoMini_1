@@ -93,6 +93,7 @@
                                 <a class="d-inline-block" href="{% url 'blog:post_detail' post.pk %}">
                                     <h2>{{ post.title }}</h2>
                                 </a>
+                                <p> {{post.view_count}} views </p> 
                                 <p class="post-content" data-full-content="{{ post.content }}">{{ post.short_content }}...... </p>
                                 <p> 관련어 : {% for tag in post.tags.all %}
                                     {{tag.name}} , 
@@ -144,7 +145,7 @@
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
                             <a href="{% url 'blog:post_new' %}" class="btn btn-primary rounded rounded-pill primary-bg text-white w-100 btn_4 mb-5">
-                                <button type="button" class="btn btn-primary" style="border: none;">새 글쓰기</button>
+                                <button type="button" class="btn btn-primary" style="border: none; transition : none;">새 글쓰기</button>
                             </a>
 
                             

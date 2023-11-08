@@ -101,8 +101,8 @@ post_detail = PostDetailView.as_view()
 class PostUpdateView(UserPassesTestMixin, UpdateView):
     model = Post
     form_class = PostForm
-    success_url = reverse_lazy('blog:post_list')
-    template_name = 'blog/post_list.html'
+    success_url = reverse_lazy('blog:post_detail')
+    template_name = 'blog/post_detail.html'
 
     def test_func(self): # UserPassesTestMixin에 있고 test_func() 메서드를 오버라이딩, True, False 값으로 접근 제한
         return self.get_object().author == self.request.user

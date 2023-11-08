@@ -1,0 +1,47 @@
+blog
+ ┣ accounts
+ ┃ ┣ admin.py
+ ┃ ┣ apps.py
+ ┃ ┣ forms.py
+ ┃ ┣ models.py
+ ┃ ┣ tests.py
+ ┃ ┣ urls.py
+ ┃ ┣ views.py
+ ┃ ┗ __init__.py
+ ┣ blog
+ ┃ ┣ images
+ ┃ ┣ admin.py
+ ┃ ┣ apps.py
+ ┃ ┣ forms.py
+ ┃ ┣ models.py
+ ┃ ┣ tests.py
+ ┃ ┣ urls.py
+ ┃ ┣ views.py
+ ┣ static
+ ┃ ┣ css
+ ┃ ┣ fonts
+ ┃ ┣ img
+ ┃ ┗ js
+ ┣ templates
+ ┃ ┣ accounts
+ ┃ ┃ ┣ friendList.html
+ ┃ ┃ ┣ login.html
+ ┃ ┃ ┣ profile.html
+ ┃ ┃ ┗ signup.html
+ ┃ ┣ blog
+ ┃ ┃ ┣ blog.html
+ ┃ ┃ ┣ post_confirm_delete.html
+ ┃ ┃ ┣ post_detail.html
+ ┃ ┃ ┣ post_list.html
+ ┃ ┃ ┣ post_list_friends.html
+ ┃ ┃ ┗ post_write.html
+ ┃ ┣ friends.html
+ ┃ ┗ index.html
+ ┣ tubeBlog
+ ┃ ┣ asgi.py
+ ┃ ┣ settings.py
+ ┃ ┣ urls.py
+ ┃ ┣ views.py
+ ┃ ┣ wsgi.py
+ ┃ ┗ __init__.py
+ ┣ manage.py
